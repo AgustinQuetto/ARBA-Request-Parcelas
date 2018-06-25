@@ -10,8 +10,9 @@ with open('parcelas.txt') as myFile:
 
 geoJson = {"type": "FeatureCollection", "features": [] }
 features = []
+version = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '10', '11']
 
-for obj in objects:
+for obj in objects[100000:110000]:
     polygon = {"type": "Feature","properties": {},"geometry": {"type": "Polygon","coordinates": [] }}
     dic = json.loads(obj)
 
@@ -40,7 +41,7 @@ for obj in objects:
 
 geoJson['features'] = features
 
-fileGeoJson = open('parcelas.geojson', 'w')
+fileGeoJson = open('geojson/parcelas'+version[10]+'.geojson', 'w')
 json.dump(geoJson, fileGeoJson)
 fileGeoJson.close()
 print('-----Listo-----')
